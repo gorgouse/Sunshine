@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.client.dao.ClientDao">
+
+
+
+    <select id="clientListCheck" parameterType="com.xzsd.pc.client.entity.ClientData" resultType="com.xzsd.pc.client.entity.ClientData">
+        select
+        a.user_id userId,
+        a.user_name userName,
+        a.user_account userAccount,
+        a.user_sex sex,
+        a.user_identity identity,
+        a.user_phone phone,
+        a.user_email email,
+        from  client a
+        where a.is_delete = 0 and user_role = #{role}
+        <if test="userAccount != null and userAccount != ''">
+            and a.user_account like concat('%', #{userAccount}, '%')
+        </if>
+
+        <if test="userName != null and userName != ''">
+            and a.user_name like concat('%', #{userName}, '%')
+        </if>
+
+    </select>
+
+
+
+   </mapper>

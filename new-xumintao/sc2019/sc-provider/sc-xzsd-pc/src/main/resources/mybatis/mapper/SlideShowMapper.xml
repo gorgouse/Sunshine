@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.slideShow.dao.SlideShowDao">
+
+    <!--统计轮播图Id数量-->
+    <select id="countSlideShowId" parameterType="com.xzsd.pc.slideShow.entity.SlideShowData" resultType="int">
+        select count(slideshow_id)
+        from slideshow
+        where is_delete = 0
+        and slideshow_id = #{slideShowId}
+    </select>
+
+    <!--新增轮播图-->
+    <insert id="slideShowAdd" parameterType="com.xzsd.pc.slideShow.entity.SlideShowData">
+        insert into slideshow
+        (
+        slideshow_id,
+
+         sort,
+         picture_path,
+         start_time,
+         end_time,
+         goods_id,
+
+
+         is_delete,
+         create_time,
+         create_by,
+         update_time,
+         update_by,
+         version
+         )
+        values
+           (
+          #{slideShowId},
+
+           #{sort},
+           #{picturePath},
+           #{startTime},
+           #{endTime},
+           #{goodsId},
+
+
+            #{isDelete},
+            now(),
+            #{createBy},
+            now(),
+            #{updateBy},
+            0
+            )
+    </insert>
+
+
+    <!--轮播图列表-->
+    <select id="slideShowListCheck" parameterType="com.xzsd.pc.slideShow.entity.SlideShowData" resultType="com.xzsd.pc.slideShow.entity.SlideShowData">
+        select
+        a.slideshow_id slideShowId,
+        a.sort sort,
+        a.slide_show_state slideState,
+        a.start_time startTime,
+        a.end_time endTime
+        from  slideshow a
+        where a.is_delete = 0
+        and a.slideshow_id = #{slideShowId}
+        order by create_time desc
+    </select>
+
+    <!--删除轮播图-->
+    <update id="slideShowDelete" parameterType="com.xzsd.pc.slideShow.entity.SlideShowData">
+        update slideshow
+        set
+        is_delete = 1,
+        create_time= now(),
+        update_by = #{userCode},
+        version = version + 1
+        where slideshow_id in
+        <foreach item="slideShowId" index="index" collection="listId" open="(" separator="," close=")">
+            #{slideShowId}
+        </foreach>
+    </update>
+
+    <!--修改轮播图信息-->
+    <update id="slideShowUpdate" parameterType="com.xzsd.pc.slideShow.entity.SlideShowData">
+        update slideshow
+        set
+            user_Id    =   #{userId},
+            user_name    = #{userName},
+
+            version      = version + 1
+        where slideshow_Id = #{slideShowId}
+          and version = #{version}
+    </update>
+
+    <!--用户详情信息-->
+    <select id="getUserByUserId" parameterType="java.lang.String" resultType="com.xzsd.pc.slideShow.entity.SlideShowData">
+        select
+            user_Id userId,
+
+            user_name userName,
+            user_account userAccount,
+            image_path imagePath,
+            user_password userPassword,
+            user_identity identity,
+            user_sex sex,
+            user_phone phone,
+            user_email email,
+            user_role role,
+
+            remark,
+            version
+        from slideShow
+        where user_Id = #{userId}
+        and is_delete = 0
+    </select>
+
+
+
+</mapper>

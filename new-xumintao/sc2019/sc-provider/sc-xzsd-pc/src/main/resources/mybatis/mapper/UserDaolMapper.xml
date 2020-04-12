@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.user.dao.UserDao">
+
+ <!--统计用户账号数量-->
+ <select id="countUserAccount" parameterType="com.xzsd.pc.user.entity.UserData" resultType="int">
+        select count(user_account)
+        from user
+        where is_delete = 0
+        and user_account = #{userAccount}
+    </select>
+
+    <!--新增用户-->
+    <insert id="userAdd" parameterType="com.xzsd.pc.user.entity.UserData">
+        insert into user
+        (user_id,
+
+         user_name,
+         user_account,
+         user_password,
+         user_identity,
+         user_sex,
+         user_phone,
+         user_email,
+         user_role,
+         image_path,
+
+         remark,
+         is_delete,
+         sort_number,
+         create_time,
+         create_by,
+         update_time,
+         update_by,
+         version
+         )
+        values
+           (#{userId},
+            #{userName},
+            #{userAccount},
+            #{userPassword},
+            #{identity},
+            #{sex},
+            #{phone},
+            #{email},
+            #{remark},
+            #{role},
+            #{imagePath},
+            #{isDelete},
+            0,
+            now(),
+            #{createBy},
+            now(),
+            #{updateBy},
+            0)
+    </insert>
+
+    <!--用户列表-->
+    <select id="userListCheck" parameterType="com.xzsd.pc.user.entity.UserData" resultType="com.xzsd.pc.user.entity.UserData">
+        select
+        a.user_id userId,
+        a.user_name userName,
+        a.user_account userAccount,
+        a.user_role role,
+        a.user_sex sex,
+        a.user_identity identity,
+        a.user_phone phone,
+        a.user_email email,
+        a.version
+        from  user a
+        where a.is_delete = 0 or user_role = #{role}
+        <if test="userAccount != null and userAccount != ''">
+            and a.user_account like concat('%', #{userAccount}, '%')
+        </if>
+        <if test="userName != null and userName != ''">
+            and a.user_name like concat('%', #{userName}, '%')
+        </if>
+        order by create_time desc
+    </select>
+
+    <!--删除用户-->
+    <update id="userDelete" parameterType="com.xzsd.pc.user.entity.UserData">
+        update user
+        set
+        is_delete = 1,
+        create_time= now(),
+        update_by = #{userCode},
+        version = version + 1
+        where user_id in
+        <foreach item="userId" index="index" collection="listId" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </update>
+
+    <!--修改用户信息-->
+    <update id="userUpdate" parameterType="com.xzsd.pc.user.entity.UserData">
+        update user
+        set
+            user_Id    =   #{userId},
+            user_name    = #{userName},
+            user_account    = #{userAccount},
+            image_path     =   #{imagePath},
+            user_identity      = #{identity},
+            user_sex          = #{sex},
+            user_phone        = #{phone},
+            user_email        = #{email},
+            user_password   =  #{password},
+            user_identity   =  #{identity}
+            version      = version + 1
+        where user_Id = #{userId}
+          and version = #{version}
+    </update>
+
+    <!--用户详情信息-->
+    <select id="getUserByUserId" parameterType="java.lang.String" resultType="com.xzsd.pc.user.entity.UserData">
+        select
+            user_Id userId,
+
+            user_name userName,
+            user_account userAccount,
+            image_path imagePath,
+            user_password userPassword,
+            user_identity identity,
+            user_sex sex,
+            user_phone phone,
+            user_email email,
+            user_role role,
+
+            remark,
+            version
+        from user
+        where user_Id = #{userId}
+        and is_delete = 0
+    </select>
+
+
+
+</mapper>

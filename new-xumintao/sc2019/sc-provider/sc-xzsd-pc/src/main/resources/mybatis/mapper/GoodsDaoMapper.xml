@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.goods.dao.GoodsDao">
+
+    <!--统计商品id数量-->
+    <select id="countGoodsId" parameterType="com.xzsd.pc.goods.entity.GoodsData" resultType="int">
+        select count(goods_id)
+        from goods
+        where is_delete = 0
+        and goods_id = #{goodsId}
+    </select>
+
+
+
+    <!--新增商品-->
+    <insert id="goodsAdd" parameterType="com.xzsd.pc.goods.entity.GoodsData">
+        insert into goods
+        (
+          goods_id,
+
+          goods_name,
+          cost_price,
+          goods_price,
+          writer,
+          press,
+          one_classify_id,
+          two_classify_id,
+          goods_introduction,
+          merchant_name,
+          goods_inventory,
+          call_number,
+          picture,
+          goods_advertise,
+
+
+
+
+          is_delete,
+          sort_number,
+          create_time,
+          create_by,
+          update_time,
+          update_by,
+          version
+          )
+          values
+           (#{goodsId},
+
+            #{goodsName},
+            #{costPrice},
+            #{goodsPrice},
+            #{writer},
+            #{press},
+            #{oneClassifyId},
+            #{twoClassifyId},
+            #{goodsIntroduction},
+            #{merchantName},
+            #{goodsInventory},
+            #{callNumber},
+            #{picture},
+            #{goodsAdvertise},
+
+
+            #{isDelete},
+            0,
+            now(),
+            #{createBy},
+            now(),
+            #{updateBy},
+            0)
+
+
+    </insert>
+
+
+    <!--商品分页查询-->
+    <select id="goodsListCheck" parameterType="com.xzsd.pc.goods.entity.GoodsData" resultType="com.xzsd.pc.goods.entity.GoodsData" >
+        select
+            goods_id   goodsId,
+            goods_name goodsName,
+            cost_price costPrice,
+            goods_price goodsPrice,
+            goods_sale_volume goodsSaleVolume,
+            goods_state goodsState,
+            writer,
+            page_view  pageView,
+            goods_advertise goodsAdvertise,
+
+            one_classify_id oneClassifyId,
+            two_classify_id twoClassifyId,
+            goods_introduction goodsIntroduction,
+            merchant_name merchantName,
+            goods_inventory goodsInventory,
+            call_number callNumber,
+            picture,
+            version version,
+
+            is_delete isDelete,
+            sort_number sortNumber,
+            create_time createTime,
+            create_by createBy
+            from   goods
+
+            where is_delete = 0
+
+            or goods_state = #{goodsState}
+
+            <if test="goodsName != null and goodsName != ''">
+            and goods_name like concat('%', #{goodsName}, '%')
+            </if>
+
+
+           <if test="goodsAdvertise != null and goodsAdvertise != ''">
+            and goods_advertise like concat('%', #{goodsAdvertise}, '%')
+           </if>
+
+
+            <if test=" writer != null and  writer != ''">
+            and  writer like concat('%', #{ writer}, '%')
+           </if>
+
+
+           <if test=" press != null and press != ''">
+            and  press like concat('%', #{ press}, '%')
+           </if>
+
+            order by create_time desc
+    </select>
+
+    <!--删除商品-->
+    <update id="goodsDelete" parameterType="com.xzsd.pc.goods.entity.GoodsData">
+        update goods
+        set
+        is_delete = 1,
+        update_time= now(),
+        update_by = #{goodsCode},
+        version = version + 1
+        where goods_Id in
+        <foreach item="goodsId" index="index" collection="listId" open="(" separator="," close=")">
+            #{goodsId}
+        </foreach>
+    </update>
+
+
+    <!--修改商品信息-->
+    <update id="goodsUpdate" parameterType="com.xzsd.pc.goods.entity.GoodsData">
+        update goods
+        set
+            goods_name   = #{goodsName},
+            call_number  = #{callNumber},
+            one_classify_id = #{oneClassifyId},
+            two_classify_id = #{twoClassifyId},
+            goods_introduction = #{goodsIntroduction},
+            merchant_name = #{merchantName},
+            goods_inventory = # {goodsInventory},
+            cost_price  = #{costPrice},
+            goods_price  = # {goodsPrice},
+            goods_advertise = #{goodsAdvertise},
+            picture = #{picture},
+            writer = #{writer},
+            press = #{press},
+            goods_id = #{goodsId},
+
+
+
+            update_time = now(),
+            create_by   = #{createBy},
+            version      = version + 1
+        where goods_id = #{goodsId}
+          and version = #{version}
+    </update>
+
+
+    <!--获取用商品信息-->
+    <select id="getGoodsByGoodsId" parameterType="java.lang.String" resultType="com.xzsd.pc.goods.entity.GoodsData">
+        select
+            goods_id goodsId,
+
+            goods_name goodsName,
+            cost_price costPrice,
+            goods_price goodsPrice,
+            goods_advertise goodsAdvertise,
+            writer,
+            press,
+           one_classify_id oneClassifyId,
+            two_classify_id twoClassifyId,
+            goods_introduction goodsIntroduction,
+            merchant_name merchantName,
+            goods_inventory goodsInventory,
+            call_number callNumber,
+            picture
+
+        from goods
+        where goods_id = #{goodsId}
+
+    </select>
+</mapper>
