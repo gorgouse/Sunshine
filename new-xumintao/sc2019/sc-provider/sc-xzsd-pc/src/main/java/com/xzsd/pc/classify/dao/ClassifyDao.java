@@ -26,7 +26,6 @@ public interface ClassifyDao {
      * @return
      */
     int countTwoClassify(String classifyId);
-
     /**
      *商品分类列表查询
      * @param

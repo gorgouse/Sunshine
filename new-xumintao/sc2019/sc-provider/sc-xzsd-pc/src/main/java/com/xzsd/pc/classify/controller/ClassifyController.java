@@ -29,7 +29,6 @@ public class ClassifyController {
      * @author xumintao
      * @Date 2020-03-21
      */
-
     @PostMapping("/classifyAdd")
     public AppResponse classifyAdd(ClassifyData classifyData)
     {
@@ -41,7 +40,7 @@ public class ClassifyController {
             return appResponse;
         }catch (Exception e)
         {
-            logger.error("商品新增失败", e);
+            logger.error("分类新增失败", e);
             System.out.println(e.toString());
             throw e;
         }
@@ -49,15 +48,15 @@ public class ClassifyController {
 
     /**
      * 分类列表
-     * @param classifyData
+     * @param
      * @return
      */
     @RequestMapping(value = "classifyListCheck")
-    public AppResponse classifyListCheck(ClassifyData classifyData) {
+    public AppResponse classifyListCheck() {
         try {
             return classifyService.classifyListCheck();
         } catch (Exception e) {
-            logger.error("查询用户列表异常", e);
+            logger.error("查询分类列表异常", e);
             System.out.println(e.toString());
             throw e;
         }
@@ -73,7 +72,7 @@ public class ClassifyController {
             String userId = AuthUtils.getCurrentUserId();
             return classifyService.classifyDelete(classifyData);
         } catch (Exception e) {
-            logger.error("用户删除错误", e);
+            logger.error("分类删除错误", e);
             System.out.println(e.toString());
             throw e;
         }

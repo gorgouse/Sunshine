@@ -15,6 +15,11 @@ public class ClientService {
  @Resource
     private ClientDao clientDao;
 
+    /**
+     * 客户列表查询
+     * @param clientData
+     * @return
+     */
     public AppResponse clientListCheck(ClientData clientData)
     {
         PageHelper.startPage(clientData.getPageNum(),clientData.getPageSize());

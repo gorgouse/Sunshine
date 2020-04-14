@@ -39,6 +39,7 @@
         </if>
             #{classifyName},
             #{parentId},
+
             #{isDelete},
             now(),
             #{createBy},
@@ -104,12 +105,12 @@
            left join
            classify b on
            (b.parent_id = a.classify_id)
-           where a.classify_level and b.classify_level = 2
+           where a.classify_level = 1 and b.classify_level = 2
            and b.is_delete = 0
            order by a.create_time desc
     </select>
 
-    <!--查询该一级分类下二级分类的数量-->
+    <!--查询该一级分类下拉二级分类的数量-->
     <select id="countTwoClassify" parameterType="java.lang.String" resultType="int">
         select count(classify_id)
         from classify

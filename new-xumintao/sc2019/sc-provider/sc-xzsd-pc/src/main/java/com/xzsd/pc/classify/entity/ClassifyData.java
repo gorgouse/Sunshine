@@ -27,7 +27,7 @@ public class ClassifyData {
     /**
      * 分类等级
      */
-   private String classifyLevel;
+   private int classifyLevel;
     /**
      * 注释
      */
@@ -66,7 +66,7 @@ public class ClassifyData {
         return this.oneClassifyId;
     }
 
-    public void setOneClassifyId(final String oneClassifyId) {
+    public void setOneClassifyId( String oneClassifyId) {
         this.oneClassifyId = oneClassifyId;
     }
 
@@ -74,7 +74,7 @@ public class ClassifyData {
         return this.classifyId;
     }
 
-    public void setClassifyId(final String classifyId) {
+    public void setClassifyId( String classifyId) {
         this.classifyId = classifyId;
     }
 
@@ -82,15 +82,15 @@ public class ClassifyData {
         return this.classifyName;
     }
 
-    public void setClassifyName(final String classifyName) {
+    public void setClassifyName( String classifyName) {
         this.classifyName = classifyName;
     }
 
-    public String getClassifyLevel() {
+    public int getClassifyLevel() {
         return this.classifyLevel;
     }
 
-    public void setClassifyLevel(final String classifyLevel) {
+    public void setClassifyLevel( int classifyLevel) {
         this.classifyLevel = classifyLevel;
     }
 
@@ -98,7 +98,7 @@ public class ClassifyData {
         return this.comment;
     }
 
-    public void setComment(final String comment) {
+    public void setComment( String comment) {
         this.comment = comment;
     }
 
@@ -106,7 +106,7 @@ public class ClassifyData {
         return this.parentId;
     }
 
-    public void setParentId(final String parentId) {
+    public void setParentId( String parentId) {
         this.parentId = parentId;
     }
 
@@ -114,7 +114,7 @@ public class ClassifyData {
         return this.isDelete;
     }
 
-    public void setIsDelete(final int isDelete) {
+    public void setIsDelete( int isDelete) {
         this.isDelete = isDelete;
     }
 
@@ -122,7 +122,7 @@ public class ClassifyData {
         return this.createTime;
     }
 
-    public void setCreateTime(final Date createTime) {
+    public void setCreateTime( Date createTime) {
         this.createTime = createTime;
     }
 
@@ -130,7 +130,7 @@ public class ClassifyData {
         return this.createBy;
     }
 
-    public void setCreateBy(final String createBy) {
+    public void setCreateBy( String createBy) {
         this.createBy = createBy;
     }
 
@@ -138,7 +138,7 @@ public class ClassifyData {
         return this.updateTime;
     }
 
-    public void setUpdateTime(final Date updateTime) {
+    public void setUpdateTime( Date updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -146,7 +146,7 @@ public class ClassifyData {
         return this.updateBy;
     }
 
-    public void setUpdateBy(final String updateBy) {
+    public void setUpdateBy( String updateBy) {
         this.updateBy = updateBy;
     }
 
@@ -154,7 +154,7 @@ public class ClassifyData {
         return this.version;
     }
 
-    public void setVersion(final int version) {
+    public void setVersion( int version) {
         this.version = version;
     }
 
@@ -162,7 +162,7 @@ public class ClassifyData {
         return this.pageSize;
     }
 
-    public void setPageSize(final int pageSize) {
+    public void setPageSize( int pageSize) {
         this.pageSize = pageSize;
     }
 
@@ -170,7 +170,7 @@ public class ClassifyData {
         return this.PageNum;
     }
 
-    public void setPageNum(final int pageNum) {
+    public void setPageNum( int pageNum) {
         this.PageNum = pageNum;
     }
 }

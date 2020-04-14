@@ -44,4 +44,85 @@ public class ClassifyTwo {
      * 版本号
      */
     private int version;
+
+
+    public String getTwoClassifyId() {
+        return this.twoClassifyId;
+    }
+
+    public void setTwoClassifyId( String twoClassifyId) {
+        this.twoClassifyId = twoClassifyId;
+    }
+
+    public String getTwoClassifyName() {
+        return this.twoClassifyName;
+    }
+
+    public void setTwoClassifyName( String twoClassifyName) {
+        this.twoClassifyName = twoClassifyName;
+    }
+
+    public String getParentId() {
+        return this.parentId;
+    }
+
+    public void setParentId( String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getComment() {
+        return this.comment;
+    }
+
+    public void setComment( String comment) {
+        this.comment = comment;
+    }
+
+    public int getIsDelete() {
+        return this.isDelete;
+    }
+
+    public void setIsDelete( int isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public Date getCreateTime() {
+        return this.createTime;
+    }
+
+    public void setCreateTime( Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreateBy() {
+        return this.createBy;
+    }
+
+    public void setCreateBy( String createBy) {
+        this.createBy = createBy;
+    }
+
+    public Date getUpdateTime() {
+        return this.updateTime;
+    }
+
+    public void setUpdateTime( Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUpdateBy() {
+        return this.updateBy;
+    }
+
+    public void setUpdateBy( String updateBy) {
+        this.updateBy = updateBy;
+    }
+
+    public int getVersion() {
+        return this.version;
+    }
+
+    public void setVersion( int version) {
+        this.version = version;
+    }
 }

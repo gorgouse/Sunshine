@@ -50,7 +50,7 @@ public class ClassifyOne {
         return this.oneClassifyId;
     }
 
-    public void setOneClassifyId(final String oneClassifyId) {
+    public void setOneClassifyId( String oneClassifyId) {
         this.oneClassifyId = oneClassifyId;
     }
 
@@ -58,7 +58,7 @@ public class ClassifyOne {
         return this.oneClassifyName;
     }
 
-    public void setOneClassifyName(final String oneClassifyName) {
+    public void setOneClassifyName( String oneClassifyName) {
         this.oneClassifyName = oneClassifyName;
     }
 
@@ -66,7 +66,7 @@ public class ClassifyOne {
         return this.comment;
     }
 
-    public void setComment(final String comment) {
+    public void setComment( String comment) {
         this.comment = comment;
     }
 
@@ -74,7 +74,7 @@ public class ClassifyOne {
         return this.ifTwoClassifyList;
     }
 
-    public void setIfTwoClassifyList(final List<ClassifyTwo> ifTwoClassifyList) {
+    public void setIfTwoClassifyList( List<ClassifyTwo> ifTwoClassifyList) {
         this.ifTwoClassifyList = ifTwoClassifyList;
     }
 
@@ -82,7 +82,7 @@ public class ClassifyOne {
         return this.isDelete;
     }
 
-    public void setIsDelete(final int isDelete) {
+    public void setIsDelete( int isDelete) {
         this.isDelete = isDelete;
     }
 
@@ -90,7 +90,7 @@ public class ClassifyOne {
         return this.createTime;
     }
 
-    public void setCreateTime(final Date createTime) {
+    public void setCreateTime( Date createTime) {
         this.createTime = createTime;
     }
 
@@ -98,7 +98,7 @@ public class ClassifyOne {
         return this.createBy;
     }
 
-    public void setCreateBy(final String createBy) {
+    public void setCreateBy( String createBy) {
         this.createBy = createBy;
     }
 
@@ -106,7 +106,7 @@ public class ClassifyOne {
         return this.updateTime;
     }
 
-    public void setUpdateTime(final Date updateTime) {
+    public void setUpdateTime( Date updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -114,7 +114,7 @@ public class ClassifyOne {
         return this.updateBy;
     }
 
-    public void setUpdateBy(final String updateBy) {
+    public void setUpdateBy( String updateBy) {
         this.updateBy = updateBy;
     }
 
@@ -122,7 +122,9 @@ public class ClassifyOne {
         return this.version;
     }
 
-    public void setVersion(final int version) {
+    public void setVersion( int version) {
         this.version = version;
     }
+
+
 }

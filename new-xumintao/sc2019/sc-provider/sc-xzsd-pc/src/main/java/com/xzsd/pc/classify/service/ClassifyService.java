@@ -7,6 +7,7 @@ import com.xzsd.pc.classify.controller.ClassifyController;
 import com.xzsd.pc.classify.dao.ClassifyDao;
 import com.xzsd.pc.classify.entity.ClassifyData;
 import com.xzsd.pc.classify.entity.ClassifyOne;
+import com.xzsd.pc.goods.entity.GoodsData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -58,16 +59,15 @@ public class ClassifyService {
     public AppResponse classifyListCheck() {
 
         List<ClassifyOne> classifyOneList = classifyDao.classifyListCheck();
-        return AppResponse.success("查询成功！",  classifyOneList);
-
+        return AppResponse.success("查询成功！",classifyOneList);
     }
 
     /**
-     * demo 删除
+     *  删除分类
      *
      * @param classifyData
      * @return
-     * @Author sumintao
+     * @Author xumintao
      * @Date 2020-03-21
      */
     @Transactional(rollbackFor = Exception.class)

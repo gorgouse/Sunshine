@@ -22,45 +22,45 @@ public class SlideShowController {
     private SlideShowService slideShowService;
 
     /**
-     * goods 新增商品
-     *
+     * 轮播图新增
      * @param slideShowData
-     * @return AppResponse
-     * @author xumintao
-     * @Date 2020-03-21
+     * @return
      */
-
     @PostMapping("/slideShowAdd")
     public AppResponse slideShowAdd(SlideShowData slideShowData) {
         try {
-            //获取商品id
-            String slideShowId = AuthUtils.getCurrentUserId();  //----
-            slideShowData.setCreateBy(slideShowId);   //---
-            AppResponse appResponse = slideShowService.slideShowAdd(slideShowData);  //对应dao的方法
+            String slideShowId = AuthUtils.getCurrentUserId();
+            slideShowData.setCreateBy(slideShowId);
+            AppResponse appResponse = slideShowService.slideShowAdd(slideShowData);
             return appResponse;
         } catch (Exception e) {
-            logger.error("商品新增失败", e);
+            logger.error("轮播图新增失败", e);
             System.out.println(e.toString());
             throw e;
         }
     }
 
-
-    //列表
+    /**
+     * 轮播图列表
+     * @param slideShowData
+     * @return
+     */
     @RequestMapping(value = "slideShowListCheck")
     public AppResponse slideShowListCheck(SlideShowData slideShowData) {
         try {
             return slideShowService.slideShowListCheck(slideShowData);
         } catch (Exception e) {
-            logger.error("查询用户列表异常", e);
+            logger.error("查询轮播图列表异常", e);
             System.out.println(e.toString());
             throw e;
         }
     }
 
-
-
-    //删除
+    /**
+     * 轮播图删除
+     * @param slideShowId
+     * @return
+     */
     @PostMapping("slideShowDelete")
     public AppResponse slideShowDelete(String slideShowId) {
         try {
@@ -74,14 +74,10 @@ public class SlideShowController {
         }
     }
 
-
     /**
-     * demo 修改轮播图
-     *
+     * 轮播图修改
      * @param slideShowData
-     * @return AppResponse
-     * @author xumintao
-     * @Date 2020-03-21
+     * @return
      */
     @PostMapping("slideShowUpdate")
     public AppResponse slideShowUpdate(SlideShowData slideShowData) {

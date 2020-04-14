@@ -27,16 +27,17 @@ public class MenuService {
      * @return
      */
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse menuAdd(MenuData menuData)     //橙色代表这个方法与与Mapper的xuml文件对应
+    public AppResponse menuAdd(MenuData menuData)
     {
-        menuData.setMenuId(StringUtil.getCommonCode(2));  //生成随机编码ID
-        menuData.setIsDelete(0);                    //设置作废标记为0
-        int count =  menuDao.menuAdd(menuData);        //紫色字代表数据库的方法ID
+        menuData.setMenuId(StringUtil.getCommonCode(2));
+        menuData.setIsDelete(0);
+        int count =  menuDao.menuAdd(menuData);
         if (0 == count) {
             return AppResponse.success("菜单新增失败，请重试！");
         }
         return AppResponse.success("菜单新增成功！");
     }
+
     /**
      * 菜单列表查询
      * @param menuData
@@ -49,6 +50,7 @@ public class MenuService {
         PageInfo<MenuData> pageData = new PageInfo<MenuData>(menuDataList);          //返回的信息就是pageInfo对象，该类是插件里的类，
         return AppResponse.success("菜单查询成功！", pageData);
     }
+
     /**
      * 菜单删除
      * @param menuId
@@ -64,6 +66,7 @@ public class MenuService {
         }
         return AppResponse.success("菜单删除成功！");
     }
+
     /**
      * 菜单修改
      * @param goodsData
@@ -80,6 +83,7 @@ public class MenuService {
         }
         return appResponse;
     }
+
     /**
      * 菜单详情
      * @param goodsId
@@ -88,6 +92,6 @@ public class MenuService {
     public AppResponse getMenuByMenuId(String goodsId)
     {
        MenuData goodsData =  menuDao.getMenuByMenuId(goodsId);
-        return AppResponse.success("查询成功！", goodsData);
+        return AppResponse.success("菜单查询成功！", goodsData);
     }
 }

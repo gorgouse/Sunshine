@@ -4,25 +4,41 @@ package com.xzsd.pc.slideShow.entity;
 import java.util.Date;
 
 public class SlideShowData {
-
+    /**
+     * 页数
+     */
     private int pageNum;
-
-
+    /**
+     * 。单页数据
+     */
     private int  pageSize;
-
+    /**
+     * 轮播图ID
+     */
     private String slideShowId;
-
-
-    private int sort; //排序
-
-    private int slideShowState;//轮播图状态
-
-    private String picturePath;//图片路径
-
-    private String preview;//预览
-
-    private Date startTime;//有效期起
-
+    /**
+     * 排序
+     */
+    private int sort;
+    /**
+     * 轮播图状态
+     */
+    private int slideShowState;
+    /**
+     * 图片路径
+     */
+    private String picturePath;
+    /**
+     * 预览
+     */
+    private String preview;
+    /**
+     * 有效期起
+     */
+    private Date startTime;
+    /**
+     * 有效期止
+     */
     private Date endTime;//有效期止
 
 

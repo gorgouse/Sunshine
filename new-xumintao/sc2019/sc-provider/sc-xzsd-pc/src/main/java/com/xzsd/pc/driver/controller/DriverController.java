@@ -20,15 +20,12 @@ public class DriverController {
     @Resource
     private DriverService driverService;
 
-    /**
-     * demo 新增司机
-     *
-     * @param driverData
-     * @return AppResponse
-     * @author xumintao
-     * @Date 2020-03-21
-     */
 
+    /**
+     * 新增司机
+     * @param driverData
+     * @return
+     */
     @PostMapping("/driverAdd")
     public AppResponse driverAdd(DriverData driverData ) {
         try {
@@ -44,7 +41,12 @@ public class DriverController {
         }
 
     }
-    //用户列表
+
+    /**
+     * 司机列表
+     * @param driverData
+     * @return
+     */
     @RequestMapping(value = "driverListCheck")
     public AppResponse driverListCheck (DriverData driverData){
         try {
@@ -56,12 +58,14 @@ public class DriverController {
         }
     }
 
-
-    //用户删除
+    /**
+     * 删除司机
+     * @param driverId
+     * @return
+     */
     @PostMapping("driverDelete")
     public AppResponse driverDelete (String driverId){
         try {
-            //获取用户id
             String userCode = AuthUtils.getCurrentUserId();
             return driverService.driverDelete(driverId,userCode);
         } catch (Exception e) {
@@ -71,19 +75,14 @@ public class DriverController {
         }
     }
 
-
     /**
-     * demo 修改用户
-     *
+     * 修改司机信息
      * @param driverData
-     * @return AppResponse
-     * @author xumintao
-     * @Date 2020-03-21
+     * @return
      */
     @PostMapping("driverUpdate")
     public AppResponse goodsUpdate(DriverData driverData) {
         try {
-            //获取用户id
             String driverId = AuthUtils.getCurrentUserId();
             driverData.setCreateBy(driverId);
             return driverService.driverUpdate(driverData);
@@ -91,9 +90,13 @@ public class DriverController {
             logger.error("修改用户信息错误", e);
             System.out.println(e.toString());
             throw e;
-        }
+          }  }
 
-    }
+    /**
+     *司机详情
+     * @param driverId
+     * @return
+     */
     @RequestMapping(value = "getDriverByDriverId")
     public AppResponse getDriverByDriverI(String driverId) {
         try {
@@ -104,6 +107,4 @@ public class DriverController {
             throw e;
         }
     }
-
-
 }

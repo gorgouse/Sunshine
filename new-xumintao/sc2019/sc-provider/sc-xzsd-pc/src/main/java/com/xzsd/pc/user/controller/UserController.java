@@ -30,18 +30,13 @@ public class UserController {
     private UserService userService;
 
     /**
-     * demo 新增用户
-     *
+     * 新增用户
      * @param userData
-     * @return AppResponse
-     * @author xumintao
-     * @Date 2020-03-21
+     * @return
      */
-
     @PostMapping("/userAdd")
     public AppResponse userAdd(UserData userData) {
         try {
-            //获取用户id
             String userID = AuthUtils.getCurrentUserId();
             userData.setCreateBy(userID);
             AppResponse appResponse = userService.userAdd(userData);
@@ -53,7 +48,12 @@ public class UserController {
         }
 
     }
-        //用户列表
+
+    /**
+     * 用户列表
+     * @param userData
+     * @return
+     */
         @RequestMapping(value = "userListCheck")
         public AppResponse userListCheck (UserData userData){
             try {
@@ -65,31 +65,29 @@ public class UserController {
             }
         }
 
-
-        //用户删除
-        @PostMapping("userDelete")
+    /**
+     * 删除用户
+     * @param userId
+     * @return
+     */
+    @PostMapping("userDelete")
         public AppResponse userDelete (String userId){
             try {
                 //获取用户id
                 String userCode = AuthUtils.getCurrentUserId();
                 return userService.userDelete(userId,userCode);
             } catch (Exception e) {
-                logger.error("用户删除错误", e);
+                logger.error("用户删除失败", e);
                 System.out.println(e.toString());
                 throw e;
             }
         }
-
-
-        /**
-         * demo 修改用户
-         *
-         * @param userData
-         * @return AppResponse
-         * @author xumintao
-         * @Date 2020-03-21
-         */
-        @PostMapping("userUpdate")
+    /**
+     * 修改用户
+     * @param userData
+     * @return
+     */
+    @PostMapping("userUpdate")
         public AppResponse goodsUpdate(UserData userData) {
             try {
                 //获取用户id
@@ -103,12 +101,18 @@ public class UserController {
             }
 
         }
-            @RequestMapping(value = "getUserByUserId")
+
+    /**
+     * 用户详情
+     * @param userId
+     * @return
+     */
+    @RequestMapping(value = "getUserByUserId")
             public AppResponse getUserByUserId(String userId) {
                 try {
                     return userService.getUserByUserId(userId);
                 } catch (Exception e) {
-                    logger.error("商品查询错误", e);
+                    logger.error("用户查询错误", e);
                     System.out.println(e.toString());
                     throw e;
                 }

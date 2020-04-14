@@ -20,6 +20,7 @@ public class MenuController {
     private static final Logger logger = LoggerFactory.getLogger(GoodsController.class);
     @Resource
     private MenuService menuService ;
+
     /**
      * 菜单新增
      * @param menuData
@@ -36,27 +37,28 @@ public class MenuController {
             return appResponse;
         }catch (Exception e)
         {
-            logger.error("商品新增失败", e);
+            logger.error("菜单新增失败", e);
             System.out.println(e.toString());
             throw e;
         }
     }
+
     /**
      * 菜单列表
      * @param menuData
      * @return
      */
-
     @RequestMapping(value = "menuListCheck")
     public AppResponse menuListCheck(MenuData menuData) {
         try {
             return menuService.menuListCheck(menuData);
         } catch (Exception e) {
-            logger.error("查询用户列表异常", e);
+            logger.error("查询菜单列表异常", e);
             System.out.println(e.toString());
             throw e;
         }
     }
+
     /**
      * //菜单删除
      * @param menuId
@@ -69,11 +71,12 @@ public class MenuController {
             String userId = AuthUtils.getCurrentUserId();
             return menuService.menuDelete(menuId,userId);
         } catch (Exception e) {
-            logger.error("用户删除错误", e);
+            logger.error("菜单删除错误", e);
             System.out.println(e.toString());
             throw e;
         }
     }
+
     /**
      * 菜单修改
      * @param menuData
@@ -88,7 +91,7 @@ public class MenuController {
             menuData.setCreateBy(menuId);
             return menuService.menuUpdate(menuData);
         } catch (Exception e) {
-            logger.error("修改用户信息错误", e);
+            logger.error("修改菜单信息错误", e);
             System.out.println(e.toString());
             throw e;
         }
@@ -104,7 +107,7 @@ public class MenuController {
         try {
             return menuService.getMenuByMenuId(menuId);
         } catch (Exception e) {
-            logger.error("商品查询错误", e);
+            logger.error("菜单查询错误", e);
             System.out.println(e.toString());
             throw e;
         }

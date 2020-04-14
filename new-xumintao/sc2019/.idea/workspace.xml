@@ -25,11 +25,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="sc2019" type="f1a62948:ProjectNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="sc2019" type="f1a62948:ProjectNode" />
-                <item name="sc-provider" type="2d1252cf:ModuleNode" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -44,6 +39,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -75,10 +71,14 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.26551723" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\idea\SpringCloud\new-xumintao\sc2019\sc-provider\sc-xzsd-pc\src\main\resources" />
+      <recent name="F:\idea\SpringCloud\new-xumintao\sc2019\sc-provider\sc-xzsd-pc\src\main\resources\mybatis\mapper" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.xzsd.app" />
     </key>
@@ -87,6 +87,13 @@
       <recent name="F:\idea\SpringCloud\new-xumintao\sc2019\sc-provider\sc-xzsd-pc\src\main\java\com\xzsd" />
       <recent name="C:\Users\Administrator\Desktop\FY2020 课件20200220\京东行走书店项目资料\sc2019\sc-provider" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ScXzsdPcApplication">
     <configuration default="true" type="Applet">
@@ -116,8 +123,9 @@
       </method>
     </configuration>
     <configuration name="ScApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="sc-api-gateway_main" />
+      <module name="sc2019.sc-api-gateway.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.neusoft.gateway.ScApiGatewayApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,8 +138,9 @@
       </method>
     </configuration>
     <configuration name="ScEurekaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="sc-eureka-server_main" />
+      <module name="sc2019.sc-eureka-server.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="app.ScEurekaApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -207,8 +216,9 @@
       </method>
     </configuration>
     <configuration name="ScXzsdPcApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="sc-xzsd-pc_main" />
+      <module name="sc2019.sc-provider.sc-xzsd-pc.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.xzsd.pc.ScXzsdPcApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -238,6 +248,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ScAdminServerApplication" />
+      <item itemvalue="Spring Boot.ScApiGatewayApplication" />
+      <item itemvalue="Spring Boot.ScConfigServerApplication" />
+      <item itemvalue="Spring Boot.ScEurekaApplication" />
+      <item itemvalue="Spring Boot.ScJobApplication" />
+      <item itemvalue="Spring Boot.ScLogApplication" />
+      <item itemvalue="Spring Boot.ScProjectApplication" />
+      <item itemvalue="Spring Boot.ScSecurityUaaApplication" />
+      <item itemvalue="Spring Boot.ScServiceApplication" />
+      <item itemvalue="Spring Boot.ScShardingApplication" />
+      <item itemvalue="Spring Boot.ScWebApplication" />
+      <item itemvalue="Spring Boot.ScWebAuthApplication" />
+      <item itemvalue="Spring Boot.ScWebStaticApplication" />
+      <item itemvalue="Spring Boot.ScXzsdAppApplication" />
+      <item itemvalue="Spring Boot.ScXzsdPcApplication" />
+      <item itemvalue="Spring Boot.ScZipkinApplication" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.013921114" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -260,6 +306,9 @@
       <workItem from="1586694964594" duration="967000" />
       <workItem from="1586696317019" duration="220000" />
       <workItem from="1586696560789" duration="996000" />
+      <workItem from="1586736068752" duration="23237000" />
+      <workItem from="1586782536336" duration="7044000" />
+      <workItem from="1586824826670" duration="4127000" />
     </task>
     <servers />
   </component>
@@ -275,69 +324,97 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="401" y="41" key="#com.intellij.ide.util.MemberChooser" timestamp="1586688282945">
+    <state x="313" y="0" width="753" height="728" key="#ScApiGatewayApplication" timestamp="1586781639115">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="401" y="41" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586688282945" />
-    <state x="478" y="105" key="FileChooserDialogImpl" timestamp="1586696671351">
+    <state x="313" y="0" width="753" height="728" key="#ScApiGatewayApplication/0.0.1366.728@0.0.1366.728" timestamp="1586781639115" />
+    <state x="313" y="0" width="753" height="728" key="#ScEurekaApplication" timestamp="1586783173062">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="478" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586696671351" />
-    <state width="1306" height="205" key="GridCell.Tab.0.bottom" timestamp="1586697560223">
+    <state x="313" y="0" width="753" height="728" key="#ScEurekaApplication/0.0.1366.728@0.0.1366.728" timestamp="1586783173062" />
+    <state x="313" y="0" width="753" height="728" key="#ScXzsdPcApplication" timestamp="1586781417601">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586697560223" />
-    <state width="1306" height="205" key="GridCell.Tab.0.center" timestamp="1586697560223">
+    <state x="313" y="0" width="753" height="728" key="#ScXzsdPcApplication/0.0.1366.728@0.0.1366.728" timestamp="1586781417601" />
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586783031056">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586697560223" />
-    <state width="1306" height="205" key="GridCell.Tab.0.left" timestamp="1586697560223">
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1586783031056" />
+    <state x="401" y="41" key="#com.intellij.ide.util.MemberChooser" timestamp="1586788272226">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586697560223" />
-    <state width="1306" height="205" key="GridCell.Tab.0.right" timestamp="1586697560223">
+    <state x="401" y="41" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586788272226" />
+    <state x="412" y="147" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586783025595">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586697560223" />
-    <state width="1306" height="205" key="GridCell.Tab.1.bottom" timestamp="1586697560224">
+    <state x="412" y="147" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1586783025595" />
+    <state x="350" y="470" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1586827176860">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586697560224" />
-    <state width="1306" height="205" key="GridCell.Tab.1.center" timestamp="1586697560223">
+    <state x="350" y="470" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1586827176860" />
+    <state x="478" y="105" key="FileChooserDialogImpl" timestamp="1586788749905">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1586697560223" />
-    <state width="1306" height="205" key="GridCell.Tab.1.left" timestamp="1586697560223">
+    <state x="478" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586788749905" />
+    <state width="1258" height="185" key="GridCell.Tab.0.bottom" timestamp="1586789592388">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1586697560223" />
-    <state width="1306" height="205" key="GridCell.Tab.1.right" timestamp="1586697560224">
+    <state width="1258" height="185" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.0.center" timestamp="1586789592388">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1586697560224" />
-    <state width="1306" height="205" key="GridCell.Tab.2.bottom" timestamp="1586697560224">
+    <state width="1258" height="185" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.0.left" timestamp="1586789592387">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586697560224" />
-    <state width="1306" height="205" key="GridCell.Tab.2.center" timestamp="1586697560224">
+    <state width="1258" height="185" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586789592387" />
+    <state width="1258" height="185" key="GridCell.Tab.0.right" timestamp="1586789592388">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1586697560224" />
-    <state width="1306" height="205" key="GridCell.Tab.2.left" timestamp="1586697560224">
+    <state width="1258" height="185" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.1.bottom" timestamp="1586789592388">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1586697560224" />
-    <state width="1306" height="205" key="GridCell.Tab.2.right" timestamp="1586697560224">
+    <state width="1258" height="185" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.1.center" timestamp="1586789592388">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1586697560224" />
-    <state x="157" y="12" key="SettingsEditor" timestamp="1586656460967">
+    <state width="1258" height="185" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.1.left" timestamp="1586789592388">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="157" y="12" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586656460967" />
-    <state x="697" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1586696562255">
+    <state width="1258" height="185" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.1.right" timestamp="1586789592388">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="697" y="257" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586696562255" />
+    <state width="1258" height="185" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.2.bottom" timestamp="1586789592388">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1258" height="185" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.2.center" timestamp="1586789592388">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1258" height="185" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.2.left" timestamp="1586789592388">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1258" height="185" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state width="1258" height="185" key="GridCell.Tab.2.right" timestamp="1586789592388">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1258" height="185" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1586789592388" />
+    <state x="157" y="12" key="SettingsEditor" timestamp="1586782640036">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="157" y="12" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586782640036" />
+    <state x="697" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1586782542254">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="697" y="257" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586782542254" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586770666289">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586770666289" />
   </component>
 </project>

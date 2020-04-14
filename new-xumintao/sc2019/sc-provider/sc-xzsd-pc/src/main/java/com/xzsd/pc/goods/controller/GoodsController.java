@@ -4,6 +4,9 @@ package com.xzsd.pc.goods.controller;
 
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.util.AuthUtils;
+import com.qcloud.cos.exception.CosClientException;
+import com.qcloud.cos.exception.CosServiceException;
+import com.qcloud.cos.model.PutObjectResult;
 import com.xzsd.pc.goods.entity.GoodsData;
 import com.xzsd.pc.goods.service.GoodsService;
 import org.slf4j.Logger;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.net.URL;
+import java.util.Date;
 //@Controller的注解包括：@Target({ElementType.TYPE})、@Retention(RetentionPolicy.RUNTIME)、@Documented、  -@Component
 //加了@Component注解，表明这是一个逻辑组件，告知Spring要为它创建bean。相当于xml配置文件中的 <bean id="" class=""/>的作用。
 
@@ -41,15 +46,14 @@ public class GoodsController {
  * @author xumintao
  * @Date 2020-03-21
  */
-
    @PostMapping("/goodsAdd")
    public AppResponse goodsAdd(GoodsData goodsData)
    {
        try
        {
-           //获取商品id
-           String goodsId = AuthUtils.getCurrentUserId();  //----
-           goodsData.setCreateBy(goodsId);   //---
+
+           String userId = AuthUtils.getCurrentUserId();  //----
+           goodsData.setCreateBy(userId);   //---
            AppResponse appResponse = goodsService.goodsAdd(goodsData);  //对应dao的方法
            return appResponse;
        }catch (Exception e)
@@ -59,11 +63,11 @@ public class GoodsController {
            throw e;
        }
    }
-
-
-
-
-      //商品列表
+    /**
+     * 商品列表
+     * @param goodsData
+     * @return
+     */
       @RequestMapping(value = "goodsListCheck")
       public AppResponse goodsListCheck(GoodsData goodsData) {
           try {
@@ -75,8 +79,11 @@ public class GoodsController {
           }
       }
 
-
-      //商品删除
+    /**
+     * 商品删除
+     * @param goodsId
+     * @return
+     */
       @PostMapping("goodsDelete")
       public AppResponse goodsDelete(String goodsId) {
           try {
@@ -90,14 +97,10 @@ public class GoodsController {
           }
       }
 
-
     /**
-     * demo 修改商品
-     *
+     * 修改商品列表
      * @param goodsData
-     * @return AppResponse
-     * @author xumintao
-     * @Date 2020-03-21
+     * @return
      */
     @PostMapping("goodsUpdate")
     public AppResponse goodsUpdate(GoodsData goodsData) {
@@ -113,20 +116,6 @@ public class GoodsController {
             throw e;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * goods 商品详情查询
@@ -146,8 +135,14 @@ public class GoodsController {
             throw e;
         }
     }
-
-
+/**
+ * 商品图片上传
+ */
+@PostMapping("goodsUpLoadPicture")
+    public void goodsUpLoadPicture()
+{
+   goodsService.goodsUpLoadPicture();
+}
 
 }
 

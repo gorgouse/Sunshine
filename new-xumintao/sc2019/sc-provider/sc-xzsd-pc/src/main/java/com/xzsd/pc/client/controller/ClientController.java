@@ -18,7 +18,11 @@ public class ClientController {
 
     private ClientService clientService;
 
-    //用户列表
+    /**
+     * 客户列表查询
+     * @param clientData
+     * @return
+     */
     @RequestMapping(value = "clientListCheck")
     public AppResponse clientListCheck (ClientData clientData){
         try {

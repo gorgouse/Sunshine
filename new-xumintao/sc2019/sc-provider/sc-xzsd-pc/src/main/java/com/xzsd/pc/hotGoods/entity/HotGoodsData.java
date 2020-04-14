@@ -3,41 +3,78 @@ package com.xzsd.pc.hotGoods.entity;
 import java.util.Date;
 
 public class HotGoodsData {
+    /**
+     * 单页的数据量
+     */
     private int pageSize;
     /**
      * 页数
      */
-    private int pageNumber;
-
+    private int pageNum;
+    /**
+     * 热门商品ID
+     */
     private String hotGoodsId;
-
+    /**
+     * 热门商品数
+     */
     private int hotGoodsNum;
-
+    /**
+     * 商品ID
+     */
     private String goodsId;
-
+    /**
+     * 起始时间
+     */
     private Date startTime;
-
+    /**
+     * 结束时间
+     */
     private Date endTime;
-
+    /**
+     * 作废标记
+     */
     private int isDelete;
-
+    /**
+     * 创建时间
+     */
     private Date createTime;
-
+    /**
+     * 创建人
+     */
     private String createBy;
-
+    /**
+     * 修改时间
+     */
     private Date updateTime;
-
+    /**
+     * 修改人
+     */
     private String updateBy;
-
+    /**
+     * 版本号
+     */
     private int version;
 
 
-    public int getPageNumber() {
-        return pageNumber;
+
+
+
+
+    public int getPageSize() {
+        return this.pageSize;
     }
 
-    public void setPageNumber(int pageNumber) {
-        this.pageNumber = pageNumber;
+    public void setPageSize(final int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 
     public String getHotGoodsId() {
