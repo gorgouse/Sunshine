@@ -1,6 +1,4 @@
 package com.xzsd.pc.store.dao;
-
-import com.xzsd.pc.goods.entity.GoodsData;
 import com.xzsd.pc.store.entity.StoreData;
 import com.xzsd.pc.user.entity.UserData;
 import org.apache.ibatis.annotations.Param;
@@ -9,19 +7,13 @@ import java.util.List;
 
 public interface StoreDao {
     /**
-     * 获取门店ID数量
-     * @param storeData
-     * @return
-     */
-    int countStoreId(StoreData storeData);
-    /**
      * 查询登录人的信息
      */
     UserData getUserByUserId(String userId);
     /**
      * 统计店长ID数量
      */
-    int countStoreManagerId(String storeId);
+    int countStoreManagerId(StoreData storeData);
     /**
      * 校验营业执照编码
      */

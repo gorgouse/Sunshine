@@ -47,12 +47,12 @@ public class StoreService {
          */
         int countBussinessLicenseCode = storeDao.countBussinessLicenseCode(storeData);
         if(countBussinessLicenseCode!=0)
-            return  AppResponse.bizError()
-
-
-
-        int countStoreId = storeDao.countStoreId(storeData);
-        if (0 != countStoreId)
+            return  AppResponse.bizError("新增门店失败");
+        /**
+         * 校验店长ID
+         */
+        int countShopManagerId = storeDao.countStoreManagerId(storeData);
+        if (0 != countShopManagerId)
         {
             return AppResponse.success("门店已存在，请再次尝试");
         }
@@ -102,8 +102,8 @@ public class StoreService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse storeUpdate(StoreData storeData) {
         AppResponse appResponse = AppResponse.success("门店修改成功");
-        int countStoreId =storeDao.countStoreId(storeData);
-        if (0 != countStoreId)
+        int countShopManagerId =storeDao.countStoreManagerId(storeData);
+        if (0 != countShopManagerId)
         {
             return AppResponse.success("门店已存在，请再次尝试");
         }
