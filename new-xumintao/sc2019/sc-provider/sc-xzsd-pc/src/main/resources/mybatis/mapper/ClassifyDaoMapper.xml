@@ -104,9 +104,13 @@
            from classify a
            left join
            classify b on
-           (b.parent_id = a.classify_id)
-           where a.classify_level = 1 and b.classify_level = 2
-           and b.is_delete = 0
+           b.parent_id = a.classify_id
+           where
+           a.classify_level = 1
+           and
+           b.classify_level = 2
+           and
+           b.is_delete = 0
            order by a.create_time desc
     </select>
 

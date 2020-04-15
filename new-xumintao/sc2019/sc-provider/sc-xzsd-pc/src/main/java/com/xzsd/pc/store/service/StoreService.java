@@ -3,10 +3,8 @@ package com.xzsd.pc.store.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
+import com.neusoft.util.RandomUtil;
 import com.neusoft.util.StringUtil;
-import com.xzsd.pc.goods.controller.GoodsController;
-import com.xzsd.pc.goods.dao.GoodsDao;
-import com.xzsd.pc.goods.entity.GoodsData;
 import com.xzsd.pc.store.controller.StoreController;
 import com.xzsd.pc.store.dao.StoreDao;
 import com.xzsd.pc.store.entity.StoreData;
@@ -35,6 +33,24 @@ public class StoreService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse storesAdd(StoreData storeData)
     {
+        String inviteCode = RandomUtil.radmonkey(8);
+        int countInviteCode = storeDao.countInviteCode(inviteCode); //校验门店要求码
+        if(countInviteCode!=0)
+        {
+            return AppResponse.bizError("新增门店失败");
+        }
+        storeData.setStoreId(StringUtil.getCommonCode(6));
+        storeData.setInviteCode(inviteCode);
+        storeData.setIsDelete(0);
+        /**
+         * 校验营业执照
+         */
+        int countBussinessLicenseCode = storeDao.countBussinessLicenseCode(storeData);
+        if(countBussinessLicenseCode!=0)
+            return  AppResponse.bizError()
+
+
+
         int countStoreId = storeDao.countStoreId(storeData);
         if (0 != countStoreId)
         {
@@ -109,5 +125,27 @@ public class StoreService {
 
         StoreData storeData =  storeDao.getStoreByStoreId(storeId);
         return AppResponse.success("门店查询成功！", storeData);
+    }
+
+    /**
+     * 查询省列表
+     */
+    public AppResponse listProvince(){
+        List<StoreData> provinceList = storeDao.listProvince();
+        return AppResponse.success("省份列表查询成功",provinceList);
+    }
+    /**
+     * 查询市列表
+     */
+    public AppResponse listCity(String provinceCode){
+        List<StoreData> cityList = storeDao.listCity(provinceCode);
+        return AppResponse.success("省份列表查询成功",cityList);
+    }
+    /**
+     * 查询区列表
+     */
+    public AppResponse listArea(String cityCode) {
+        List<StoreData> areaList = storeDao.listArea(cityCode);
+        return AppResponse.success("省份列表查询成功", areaList);
     }
 }

@@ -38,7 +38,7 @@ public class StoreData {
     /**
      * 营业执照编码
      */
-    private String bussinessLicenseId;
+    private String bussinessLicenseCode;
     /**
      * 店长名称
      */
@@ -50,15 +50,27 @@ public class StoreData {
     /**
      * 省级编号
      */
-    private String provinceId;
+    private String provinceCode;
+    /**
+     * 省级名称
+     */
+    private System provinceName;
     /**
      * 市级编号
      */
-    private String cityId;
+    private String cityCode;
+    /**
+     * 市级名称
+     */
+    private String cityName;
     /**
      * 区级编号
      */
-    private String areaId;
+    private String areaCode;
+    /**
+     * 区级名称
+     */
+    private String areaName;
     /**
      * 角色
      */
@@ -151,12 +163,12 @@ public class StoreData {
         this.storeManagerAccount = storeManagerAccount;
     }
 
-    public String getBussinessLicenseId() {
-        return this.bussinessLicenseId;
+    public String getBussinessLicenseCode() {
+        return this.bussinessLicenseCode;
     }
 
     public void setBussinessLicenseId( String bussinessLicenseId) {
-        this.bussinessLicenseId = bussinessLicenseId;
+        this.bussinessLicenseCode = bussinessLicenseId;
     }
 
     public String getStoreManagerName() {
@@ -175,28 +187,28 @@ public class StoreData {
         this.userName = userName;
     }
 
-    public String getProvinceId() {
-        return this.provinceId;
+    public String getProvinceCode() {
+        return this.provinceCode;
     }
 
-    public void setProvinceId( String provinceId) {
-        this.provinceId = provinceId;
+    public void setProvinceCode( String provinceCode) {
+        this.provinceCode = provinceCode;
     }
 
-    public String getCityId() {
-        return this.cityId;
+    public String getCityCode() {
+        return this.cityCode;
     }
 
-    public void setCityId( String cityId) {
-        this.cityId = cityId;
+    public void setCityCode( String cityId) {
+        this.cityCode= cityCode;
     }
 
-    public String getAreaId() {
-        return this.areaId;
+    public String getAreaCode() {
+        return this.areaCode;
     }
 
-    public void setAreaId( String areaId) {
-        this.areaId = areaId;
+    public void setAreaCode( String areaCode) {
+        this.areaCode = areaCode;
     }
 
     public String getRole() {
@@ -245,5 +257,29 @@ public class StoreData {
 
     public void setUpdateTime( Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public System getProvinceName() {
+        return this.provinceName;
+    }
+
+    public void setProvinceName(final System provinceName) {
+        this.provinceName = provinceName;
+    }
+
+    public String getCityName() {
+        return this.cityName;
+    }
+
+    public void setCityName(final String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getAreaName() {
+        return this.areaName;
+    }
+
+    public void setAreaName(final String areaName) {
+        this.areaName = areaName;
     }
 }

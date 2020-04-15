@@ -30,7 +30,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../new/build.gradle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
   </component>
   <component name="SvnConfiguration">
@@ -44,6 +44,8 @@
       <option name="presentableId" value="Default" />
       <updated>1586611417989</updated>
       <workItem from="1586611419198" duration="1157000" />
+      <workItem from="1586910473490" duration="172000" />
+      <workItem from="1586910661332" duration="7000" />
     </task>
     <servers />
   </component>

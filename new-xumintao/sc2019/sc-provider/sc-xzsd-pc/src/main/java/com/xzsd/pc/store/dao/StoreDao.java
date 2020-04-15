@@ -2,6 +2,7 @@ package com.xzsd.pc.store.dao;
 
 import com.xzsd.pc.goods.entity.GoodsData;
 import com.xzsd.pc.store.entity.StoreData;
+import com.xzsd.pc.user.entity.UserData;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -12,7 +13,25 @@ public interface StoreDao {
      * @param storeData
      * @return
      */
-    int countStoreId(StoreData storeData);  //增，改
+    int countStoreId(StoreData storeData);
+    /**
+     * 查询登录人的信息
+     */
+    UserData getUserByUserId(String userId);
+    /**
+     * 统计店长ID数量
+     */
+    int countStoreManagerId(String storeId);
+    /**
+     * 校验营业执照编码
+     */
+    int countBussinessLicenseCode(StoreData storeData);
+    /**
+     * 统计邀请码数量
+     * @param inviteCode
+     * @return
+     */
+    int countInviteCode(String inviteCode);
     /**
      * 门店新增
      * @param storeData
@@ -44,5 +63,16 @@ public interface StoreDao {
      * @return
      */
     StoreData getStoreByStoreId(@Param("storeId") String storeId);
-
+    /**
+     * 查询省列表
+     */
+    List<StoreData>listProvince();
+    /**
+     * 查询市列表
+     */
+    List<StoreData>listCity(String provinceCode);
+    /**
+     * 查询区列表
+     */
+    List<StoreData>listArea(String cityCode);
 }

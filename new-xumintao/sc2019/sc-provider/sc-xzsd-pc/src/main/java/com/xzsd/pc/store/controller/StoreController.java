@@ -111,4 +111,54 @@ public class StoreController {
             throw e;
         }
     }
+
+    /**
+     * 查询省份列表
+     * @return
+     */
+    @RequestMapping("listProvince")
+    public AppResponse listProvince(){
+        try{
+            AppResponse appResponse = storeService.listProvince();
+            return appResponse;
+        }catch (Exception e){
+            logger.error("省列表查询失败");
+            System.out.println(e.toString());
+            throw e;
+        }
+    }
+
+    /**
+     * 查询城市列表
+     * @param provinceCode
+     * @return
+     */
+    @RequestMapping("listCity")
+    public AppResponse listCity(String provinceCode){
+        try{
+            AppResponse appResponse = storeService.listCity(provinceCode);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("市列表查询失败");
+            System.out.println(e.toString());
+            throw e;
+        }
+    }
+
+    /**
+     * 查询区列表
+     * @param cityCode
+     * @return
+     */
+    @RequestMapping("listArea")
+    public AppResponse listArea(String cityCode){
+        try{
+            AppResponse appResponse = storeService.listArea(cityCode);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("区列表查询失败");
+            System.out.println(e.toString());
+            throw e;
+        }
+    }
 }

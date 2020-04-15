@@ -128,21 +128,21 @@ public class GoodsService {
      */
     public void goodsUpLoadPicture() {
 
-        COSCredentials cred = new BasicCOSCredentials("AKIDXuxxx", "71f4FEyWxxx");
-
-        ClientConfig clientConfig = new ClientConfig(new Region("ap-beijing"));
+        COSCredentials cred = new BasicCOSCredentials("AKID2ub6HDyf03rPfHrfZO8iCRLbo31CiuQY", "yg8F6ez3zd0KVP2TdfQtJbbJuGUR6i9J");
+        //
+        ClientConfig clientConfig = new ClientConfig(new Region("ap-guangzhou"));
 
         COSClient cosclient = new COSClient(cred, clientConfig);
+       //
+        String bucketName = "item-1301846529";
 
-        String bucketName = "item";
-
-        String key = "2.png";
-        File localFile = new File("src/main/resources/2.png");
+        String key = "3.png";
+        File localFile = new File("F:\\idea\\SpringCloud\\picture\\2.png");
         PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, key, localFile);
 
         putObjectRequest.setStorageClass(StorageClass.Standard_IA);
 
-        // 关闭客户端
+
         cosclient.shutdown();
 
         try {
