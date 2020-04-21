@@ -4,9 +4,6 @@ import com.neusoft.core.restful.AppResponse;
 import com.neusoft.util.AuthUtils;
 import com.xzsd.pc.hotGoods.entity.HotGoodsData;
 import com.xzsd.pc.hotGoods.service.HotGoodsService;
-import com.xzsd.pc.store.controller.StoreController;
-import com.xzsd.pc.store.entity.StoreData;
-import com.xzsd.pc.store.service.StoreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,8 +25,8 @@ public class HotGoodsController {
      * @param hotGoodsData
      * @return
      */
-    @PostMapping("/hotgoodsAdd")
-    public AppResponse hotgoodsAdd(HotGoodsData hotGoodsData)
+    @PostMapping("/hotGoodsAdd")
+    public AppResponse hotGoodsAdd(HotGoodsData hotGoodsData)
     {
         try
         {
@@ -51,7 +48,7 @@ public class HotGoodsController {
      * @return
      */
     @RequestMapping(value = "hotGoodsListCheck")
-    public AppResponse  hotGoodsListCheck(HotGoodsData hotGoodsData) {
+    public AppResponse hotGoodsListCheck(HotGoodsData hotGoodsData) {
         try {
             return  hotGoodsService.hotGoodsListCheck(hotGoodsData);
         } catch (Exception e) {
@@ -84,7 +81,7 @@ public class HotGoodsController {
      * @return
      */
     @PostMapping("hotGoodsUpdate")
-    public AppResponse  hotGoodsUpdate(HotGoodsData hotGoodsData) {
+    public AppResponse hotGoodsUpdate(HotGoodsData hotGoodsData) {
         try {
             String  userId = AuthUtils.getCurrentUserId();
             hotGoodsData.setCreateBy(userId);
@@ -101,7 +98,7 @@ public class HotGoodsController {
      * @param hotGoodsId
      * @return
      */
-    @RequestMapping(value = "getStoreByStoreId")
+    @RequestMapping(value = "getHotGoodsByHotGoodsId")
     public AppResponse getHotGoodsByHotGoodsId(String hotGoodsId) {
         try {
             return  hotGoodsService.getHotGoodsByHotGoodsId(hotGoodsId);

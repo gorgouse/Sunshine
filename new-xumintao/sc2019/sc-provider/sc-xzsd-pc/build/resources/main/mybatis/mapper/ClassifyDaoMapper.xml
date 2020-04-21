@@ -1,59 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xzsd.pc.classify.dao.ClassifyDao">
+<mapper namespace="com.xzsd.pc.classify成功.dao.ClassifyDao">
 
-    <!--统计分类id数量-->
-    <select id="countClassifyId" parameterType="com.xzsd.pc.classify.entity.ClassifyData" resultType="int">
+       <!--统计分类id数量-->
+       <select id="countClassifyId" parameterType="com.xzsd.pc.classify成功.entity.ClassifyData" resultType="int">
         select count(classify_id)
         from classify
         where is_delete = 0
         and classify_id = #{classifyId}
     </select>
 
+    <!--获取当前分类的父级-->
+    <select id="countParentId" parameterType="java.lang.String" resultType="int">
+        select
+        count(parent_id)
+        from classify
+        where parent_id = #{classifyId}
+    </select>
+
+       <!--新增分类-->
+       <insert id="classifyAdd" parameterType="com.xzsd.pc.classify成功.entity.ClassifyData">
+              insert into classify
+              (
+              classify_id,
+              parent_id,
+              classify_level,
+              classify_name,
+
+              is_delete,
+              create_time,
+              create_by,
+              update_time,
+              update_by,
+              version
+              )
+              values
+              (
+              #{classifyId},
+               #{parentId},
+              <if test="parentId==null or parentId==''">
+                     1,
+              </if>
+              <if test="parentId!=null and parentId!=''">
+                     2,
+              </if>
+              #{classifyName},
+
+              #{isDelete},
+              now(),
+              #{createBy},
+              now(),
+              #{updateBy},
+              0)
 
 
-    <!--新增分类-->
-    <insert id="classifyAdd" parameterType="com.xzsd.pc.classify.entity.ClassifyData">
-        insert into classify
-        (
-          classify_id,
-           classify_level,
-           classify_name,
-           parent_id,
-
-          is_delete,
-          create_time,
-          create_by,
-          update_time,
-          update_by,
-          version
-          )
-          values
-           (
-           #{classifyId},
-        <if test="oneClassifyId==null or oneClassifyId==''">
-            1,
-        </if>
-        <if test="oneClassifyId!=null and oneClassifyId!=''">
-            2,
-        </if>
-            #{classifyName},
-            #{parentId},
-
-            #{isDelete},
-            now(),
-            #{createBy},
-            now(),
-            #{updateBy},
-            0)
-
-
-    </insert>
+       </insert>
 
 
 
-    <!--查询商品分类详情信息-->
-    <select id="getClassifyByClassifyId" parameterType="java.lang.String" resultType="com.xzsd.pc.classify.entity.ClassifyData">
+       <!--查询商品分类详情信息-->
+       <select id="getClassifyByClassifyId" parameterType="java.lang.String" resultType="com.xzsd.pc.classify成功.entity.ClassifyData">
         select
             classify_id classifyId,
             classify_level classifyLevel,
@@ -73,8 +79,8 @@
     </select>
 
 
-    <!--修改商品分类   -->
-    <update id="classifyUpdate" parameterType="com.xzsd.pc.classify.entity.ClassifyData">
+       <!--修改商品分类   -->
+       <update id="classifyUpdate" parameterType="com.xzsd.pc.classify成功.entity.ClassifyData">
         update classify set
             classify_name = #{classifyName},
             comment = #{comment},
@@ -86,42 +92,51 @@
          and is_delete = 0
     </update>
 
-    <!--查询分类列表-->
-    <resultMap id="classifyListMap" type="com.xzsd.pc.classify.entity.ClassifyOne">
-        <id property=" oneClassifyId" column="one_classify_id" jdbcType="VARCHAR"/>
-        <id property=" oneClassifyName" column="one_classify_name" jdbcType="VARCHAR"/>
-        <collection property="ifTwoClassifyList" ofType="com.xzsd.pc.classify.entity.ClassifyTwo">
-            <id property="twoClassifyId" column="two_classify_id" jdbcType="VARCHAR"/>
-            <id property=" twoClassifyName" column="two_classify_name" jdbcType="VARCHAR"/>
+
+
+       <!--查询分类列表映射集合-->
+    <resultMap id="aa"     type="com.xzsd.pc.classify成功.entity.ClassifyOne">
+        <result column="fid" property="classifyId"              javaType="string"  jdbcType="VARCHAR"/>
+        <result column="fparentId" property="parentId"          javaType="string"  jdbcType="VARCHAR"/>
+        <result column="fclassifyLevel" property="classifyLevel" javaType="int"    jdbcType="INTEGER"/>
+        <result column="fclassifyName" property="classifyName"   javaType="string" jdbcType="VARCHAR"/>
+
+        <collection property="twoClassifyList" ofType="com.xzsd.pc.classify成功.entity.ClassifyTwo">
+
+            <result column="sid" property="classifyId"               javaType="string"    jdbcType="VARCHAR"/>
+            <result column="sparentId" property="parentId"           javaType="string"    jdbcType="VARCHAR"/>
+            <result column="sclassifyLevel" property="classifyLevel" javaType="int"    jdbcType="INTEGER"/>
+            <result column="sclassifyName" property="classifyName"   javaType="string"  jdbcType="VARCHAR"/>
         </collection>
+
     </resultMap>
-    <select id="classifyListCheck" resultMap="classifyListMap">
-        select
-           a.classify_id,
-           a.classify_name,
-           b.classify_id as twoClassifyId,
-           b.classify_name as twoClassifyName
-           from classify a
-           left join
-           classify b on
-           (b.parent_id = a.classify_id)
-           where a.classify_level = 1 and b.classify_level = 2
-           and b.is_delete = 0
-           order by a.create_time desc
+    <!--分类查询-->
+    <select id="classifyListCheck" resultMap="aa">
+       select
+        a.classify_id as fid,
+        a.classify_name as fclassifyName,
+        a.parent_id  as fparentId,
+        a.classify_level as fclassifyLevel,
+
+        b.classify_id as sid,
+        b.classify_name as sclassifyName,
+        b.parent_id  as sparentId,
+        b.classify_level as sclassifyLevel
+
+        from classify a
+        left join classify b
+        on (a.classify_id = b.parent_id )
+        where a.classify_level=1
+        and b.classify_level=2
+        and b.is_delete = 0
+        and a.is_delete = 0
+        order by a.create_time desc
     </select>
 
-    <!--查询该一级分类下拉二级分类的数量-->
-    <select id="countTwoClassify" parameterType="java.lang.String" resultType="int">
-        select count(classify_id)
-        from classify
-        where parent_id= #{classifyId}
-        and is_delete = 0
-    </select>
 
 
-
-    <!--删除商品分类-->
-    <update id="classifyDelete" parameterType="com.xzsd.pc.classify.entity.ClassifyData">
+       <!--删除商品分类-->
+       <update id="classifyDelete" parameterType="com.xzsd.pc.classify成功.entity.ClassifyData">
         update classify set
             is_delete = 1,
             update_by = #{updateBy},

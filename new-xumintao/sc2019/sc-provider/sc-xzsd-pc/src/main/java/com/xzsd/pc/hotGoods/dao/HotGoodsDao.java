@@ -1,8 +1,6 @@
 package com.xzsd.pc.hotGoods.dao;
 
-import com.xzsd.pc.goods.entity.GoodsData;
 import com.xzsd.pc.hotGoods.entity.HotGoodsData;
-import com.xzsd.pc.store.entity.StoreData;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

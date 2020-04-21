@@ -20,9 +20,25 @@ public class HotGoodsData {
      */
     private int hotGoodsNum;
     /**
+     * 热门商品介绍
+     */
+    private String hotGoodsIntroduction;
+    /**
+     * 排序
+     */
+    private int sort;
+    /**
      * 商品ID
      */
     private String goodsId;
+    /**
+     * 商品名称
+     */
+    private String goodsName;
+    /**
+     * 售价
+     */
+    private String goodsPrice;
     /**
      * 起始时间
      */
@@ -57,9 +73,29 @@ public class HotGoodsData {
     private int version;
 
 
+    public String getGoodsName() {
+        return this.goodsName;
+    }
 
+    public void setGoodsName(final String goodsName) {
+        this.goodsName = goodsName;
+    }
 
+    public String getGoodsPrice() {
+        return this.goodsPrice;
+    }
 
+    public void setGoodsPrice(final String goodsPrice) {
+        this.goodsPrice = goodsPrice;
+    }
+
+    public String getHotGoodsIntroduction() {
+        return this.hotGoodsIntroduction;
+    }
+
+    public void setHotGoodsIntroduction(final String hotGoodsIntroduction) {
+        this.hotGoodsIntroduction = hotGoodsIntroduction;
+    }
 
     public int getPageSize() {
         return this.pageSize;
@@ -91,6 +127,14 @@ public class HotGoodsData {
 
     public void setHotGoodsNum(int hotGoodsNum) {
         this.hotGoodsNum = hotGoodsNum;
+    }
+
+    public int getSort() {
+        return this.sort;
+    }
+
+    public void setSort(final int sort) {
+        this.sort = sort;
     }
 
     public String getGoodsId() {

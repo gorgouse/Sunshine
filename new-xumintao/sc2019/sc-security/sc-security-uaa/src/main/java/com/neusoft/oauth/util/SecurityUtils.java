@@ -1,5 +1,6 @@
 package com.neusoft.oauth.util;
 
+import com.neusoft.oauth.PasswordUtils;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,8 +30,9 @@ public class SecurityUtils {
     }
 
     public static void main(String[] args) {
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String password = encoder.encode("abc123");
+        String password = encoder.encode("123456");
         System.out.println(password);
     }
 

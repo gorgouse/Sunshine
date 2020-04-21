@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xzsd.pc.user.dao.UserDao">
+<mapper namespace="com.xzsd.pc.user成功.dao.UserDao">
+    <!--获取登录者角色-->
+    <select id="getUserRole" parameterType="java.lang.String" resultType="java.lang.String">
+        select role
+        from user
+        where user_id = #{currentUserId}
+    </select>
+
+    <!--统计手机号-->
+    <select id="countPhone" parameterType="com.xzsd.pc.user成功.entity.UserData" resultType="int">
+        select count(user_phone)
+        from user
+        where user_phone = #{phone}
+        and is_delete = 0
+    </select>
 
  <!--统计用户账号数量-->
- <select id="countUserAccount" parameterType="com.xzsd.pc.user.entity.UserData" resultType="int">
+ <select id="countUserAccount" parameterType="com.xzsd.pc.user成功.entity.UserData" resultType="int">
         select count(user_account)
         from user
         where is_delete = 0
         and user_account = #{userAccount}
     </select>
 
-    <!--新增用户-->
-    <insert id="userAdd" parameterType="com.xzsd.pc.user.entity.UserData">
-        insert into user
-        (user_id,
-
+    <!--新增用户 参数：账号 密码-->
+    <insert id="userAdd" parameterType="com.xzsd.pc.user成功.entity.UserData">
+        insert into
+         user
+        (
+         user_id,
          user_name,
          user_account,
          user_password,
@@ -24,7 +39,6 @@
          user_email,
          user_role,
          image_path,
-
          remark,
          is_delete,
          sort_number,
@@ -45,7 +59,7 @@
             #{email},
             #{remark},
             #{role},
-            #{imagePath},
+            #{userImage},
             #{isDelete},
             0,
             now(),
@@ -55,12 +69,13 @@
             0)
     </insert>
 
-    <!--用户列表-->
-    <select id="userListCheck" parameterType="com.xzsd.pc.user.entity.UserData" resultType="com.xzsd.pc.user.entity.UserData">
+    <!--用户列表 参数:pageSize pageNum -->
+    <select id="userListCheck" parameterType="com.xzsd.pc.user成功.entity.UserData" resultType="com.xzsd.pc.user成功.entity.UserData">
         select
         a.user_id userId,
         a.user_name userName,
         a.user_account userAccount,
+        user_image userImage,
         a.user_role role,
         a.user_sex sex,
         a.user_identity identity,
@@ -75,16 +90,19 @@
         <if test="userName != null and userName != ''">
             and a.user_name like concat('%', #{userName}, '%')
         </if>
+        <if test="role != null and role != ''">
+            and role = #{role}
+        </if>
         order by create_time desc
     </select>
 
-    <!--删除用户-->
-    <update id="userDelete" parameterType="com.xzsd.pc.user.entity.UserData">
+    <!--删除用户 参数：ID-->
+    <update id="userDelete" parameterType="com.xzsd.pc.user成功.entity.UserData">
         update user
         set
         is_delete = 1,
         create_time= now(),
-        update_by = #{userCode},
+        update_by = #{currentUserId},
         version = version + 1
         where user_id in
         <foreach item="userId" index="index" collection="listId" open="(" separator="," close=")">
@@ -92,41 +110,38 @@
         </foreach>
     </update>
 
-    <!--修改用户信息-->
-    <update id="userUpdate" parameterType="com.xzsd.pc.user.entity.UserData">
+    <!--修改用户信息 参数：ID 和其他数据(ID无法修改 注)-->
+    <update id="userUpdate" parameterType="com.xzsd.pc.user成功.entity.UserData">
         update user
         set
             user_Id    =   #{userId},
             user_name    = #{userName},
             user_account    = #{userAccount},
-            image_path     =   #{imagePath},
+            user_image     =   #{userImage},
             user_identity      = #{identity},
             user_sex          = #{sex},
             user_phone        = #{phone},
             user_email        = #{email},
-            user_password   =  #{password},
-            user_identity   =  #{identity}
+            user_password   =  #{userPassword},
+            user_identity   =  #{identity},
             version      = version + 1
-        where user_Id = #{userId}
+        where user_id = #{userId}
           and version = #{version}
     </update>
 
-    <!--用户详情信息-->
-    <select id="getUserByUserId" parameterType="java.lang.String" resultType="com.xzsd.pc.user.entity.UserData">
+    <!--用户详情信息 -->
+    <select id="getUserByUserId" parameterType="java.lang.String" resultType="com.xzsd.pc.user成功.entity.UserData">
         select
             user_Id userId,
-
             user_name userName,
             user_account userAccount,
-            image_path imagePath,
+            user_image userImage,
             user_password userPassword,
             user_identity identity,
             user_sex sex,
             user_phone phone,
             user_email email,
             user_role role,
-
-            remark,
             version
         from user
         where user_Id = #{userId}

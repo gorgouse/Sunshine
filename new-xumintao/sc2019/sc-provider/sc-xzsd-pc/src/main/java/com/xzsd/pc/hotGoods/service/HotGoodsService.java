@@ -7,9 +7,6 @@ import com.neusoft.util.StringUtil;
 import com.xzsd.pc.hotGoods.controller.HotGoodsController;
 import com.xzsd.pc.hotGoods.dao.HotGoodsDao;
 import com.xzsd.pc.hotGoods.entity.HotGoodsData;
-import com.xzsd.pc.store.controller.StoreController;
-import com.xzsd.pc.store.dao.StoreDao;
-import com.xzsd.pc.store.entity.StoreData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -39,14 +36,13 @@ public class HotGoodsService {
         {
             return AppResponse.success("新增的热门商品已存在，请再次尝试");
         }
-
         hotGoodsData.setHotGoodsId(StringUtil.getCommonCode(2));
         hotGoodsData.setIsDelete(0);
         int count = hotGoodsDao.hotGoodsAdd(hotGoodsData);
         if (0 == count) {
             return AppResponse.success("新增失败，请重试！");
         }
-        return AppResponse.success("新增成功！");
+        return AppResponse.success("热门商品新增成功！");
     }
 
     /**
@@ -59,7 +55,7 @@ public class HotGoodsService {
         List<HotGoodsData> hotGoodsDataList = hotGoodsDao.hotGoodsListCheck(hotGoodsData);
         // 包装Page对象
         PageInfo<HotGoodsData> pageData = new PageInfo<HotGoodsData>(hotGoodsDataList);
-        return AppResponse.success("查询成功！", pageData);
+        return AppResponse.success("热门商品查询成功！", pageData);
     }
     /**
      * 热门商品删除

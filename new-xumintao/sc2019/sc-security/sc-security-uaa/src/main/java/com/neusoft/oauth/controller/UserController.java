@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 
+
     @GetMapping("/user")
     public Object user(Authentication authentication) {
         return authentication.getPrincipal();

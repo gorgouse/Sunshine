@@ -3,80 +3,69 @@ package com.xzsd.pc.order.entity;
 import java.util.Date;
 
 public class OrderData {
+
     /**
-     * 单页的数量
+     * 订单id
      */
-    private int pageNum;
+    private String orderId;
+    /**
+     * 下单人姓名
+     */
+    private String userName;
+    /**
+     * 下单人id
+     */
+    private String userId;
+    /**
+     * 登录者Id
+     */
+    private String loginUserId;
+    /**
+     * 支付时间起
+     */
+    private String payTimeStart;
+    /**
+     * 支付时间止
+     */
+    private String payTimeEnd;
+    /**
+     * 下单人电话
+     */
+    private String phone;
+    /**
+     * 订单状态(0已下单， 1待取货， 2已取货， 3已完成未评价， 4已完成已评价， 5已取消)
+     */
+    private String orderStateId;
+    /**
+     * 角色编号（当前登录的角色）
+     */
+    private String role;
+    /**
+     * 订单总价
+     */
+    private String orderAllCost;
+    /**
+     * 支付状态
+     */
+    private String defrayStatus;
+    /**
+     * 门店编码
+     */
+    private String storeId;
+    /**
+     * 支付时间
+     */
+    private String payTime;
     /**
      * 页码
      */
     private int pageSize;
     /**
-     * 订单ID
+     * 页数
      */
-    private String orderId;
+    private int pageNum;
     /**
-     * 用户ID
-     */
-    private String userId;
-    /**
-     * 商品ID
-     */
-    private String goodsId;
-    /**
-     * 商品名称
-     */
-    private String goodsName;
-    /**
-     * 商品数量
-     */
-    private int goodsCount;
-    /**
-     * 总金额
-     */
-    private String totalSum;
-    /**
-     * 售价
-     */
-    private String goodsSale;
-    /**
-     * 定价
-     */
-    private String goodsPrice;
-    /**
-     * 用户姓名
-     */
-    private String userName;
-    /**
-     * 手机号码
-     */
-    private String phone;
-    /**
-     * 付款日期起
-     */
-    private String payTimeStart;
-    /**
-     * 付款日期止
-     */
-    private String getPayTimeEnd;
-    /**
-     * 角色编号
-     */
-    private String role;
-    /**
-     * 门店编号
-     */
-    private String storeId;
-    /**
-     * 订单状态
-     */
-    private String orderState;
-    /**
-     * 确认付款时间
-     */
-    private String payTime;
-    /**
-     * 作废标记
+     * 作废标记 0为存在，1为作废
      */
     private int isDelete;
     /**
@@ -90,7 +79,7 @@ public class OrderData {
     /**
      * 更新者
      */
-    private String updateBY;
+    private String updateBy;
     /**
      * 更新时间
      */
@@ -98,24 +87,10 @@ public class OrderData {
     /**
      * 版本号
      */
+
     private String version;
 
 
-    public int getPageNum() {
-        return this.pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public int getPageSize() {
-        return this.pageSize;
-    }
-
-    public void setPageSize( int pageSize) {
-        this.pageSize = pageSize;
-    }
 
     public String getOrderId() {
         return this.orderId;
@@ -123,62 +98,6 @@ public class OrderData {
 
     public void setOrderId( String orderId) {
         this.orderId = orderId;
-    }
-
-    public String getUserId() {
-        return this.userId;
-    }
-
-    public void setUserId( String userId) {
-        this.userId = userId;
-    }
-
-    public String getGoodsId() {
-        return this.goodsId;
-    }
-
-    public void setGoodsId( String goodsId) {
-        this.goodsId = goodsId;
-    }
-
-    public String getGoodsName() {
-        return this.goodsName;
-    }
-
-    public void setGoodsName( String goodsName) {
-        this.goodsName = goodsName;
-    }
-
-    public int getGoodsCount() {
-        return this.goodsCount;
-    }
-
-    public void setGoodsCount( int goodsCount) {
-        this.goodsCount = goodsCount;
-    }
-
-    public String getTotalSum() {
-        return this.totalSum;
-    }
-
-    public void setTotalSum( String totalSum) {
-        this.totalSum = totalSum;
-    }
-
-    public String getGoodsSale() {
-        return this.goodsSale;
-    }
-
-    public void setGoodsSale( String goodsSale) {
-        this.goodsSale = goodsSale;
-    }
-
-    public String getGoodsPrice() {
-        return this.goodsPrice;
-    }
-
-    public void setGoodsPrice( String goodsPrice) {
-        this.goodsPrice = goodsPrice;
     }
 
     public String getUserName() {
@@ -189,12 +108,20 @@ public class OrderData {
         this.userName = userName;
     }
 
-    public String getPhone() {
-        return this.phone;
+    public String getUserId() {
+        return this.userId;
     }
 
-    public void setPhone( String phone) {
-        this.phone = phone;
+    public void setUserId( String userId) {
+        this.userId = userId;
+    }
+
+    public String getLoginUserId() {
+        return this.loginUserId;
+    }
+
+    public void setLoginUserId( String loginUserId) {
+        this.loginUserId = loginUserId;
     }
 
     public String getPayTimeStart() {
@@ -205,12 +132,28 @@ public class OrderData {
         this.payTimeStart = payTimeStart;
     }
 
-    public String getGetPayTimeEnd() {
-        return this.getPayTimeEnd;
+    public String getPayTimeEnd() {
+        return this.payTimeEnd;
     }
 
-    public void setGetPayTimeEnd( String getPayTimeEnd) {
-        this.getPayTimeEnd = getPayTimeEnd;
+    public void setPayTimeEnd( String payTimeEnd) {
+        this.payTimeEnd = payTimeEnd;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
+
+    public void setPhone( String phone) {
+        this.phone = phone;
+    }
+
+    public String getOrderStateId() {
+        return this.orderStateId;
+    }
+
+    public void setOrderStateId( String orderStateId) {
+        this.orderStateId = orderStateId;
     }
 
     public String getRole() {
@@ -221,6 +164,22 @@ public class OrderData {
         this.role = role;
     }
 
+    public String getOrderAllCost() {
+        return this.orderAllCost;
+    }
+
+    public void setOrderAllCost( String orderAllCost) {
+        this.orderAllCost = orderAllCost;
+    }
+
+    public String getDefrayStatus() {
+        return this.defrayStatus;
+    }
+
+    public void setDefrayStatus( String defrayStatus) {
+        this.defrayStatus = defrayStatus;
+    }
+
     public String getStoreId() {
         return this.storeId;
     }
@@ -229,20 +188,28 @@ public class OrderData {
         this.storeId = storeId;
     }
 
-    public String getOrderState() {
-        return this.orderState;
-    }
-
-    public void setOrderState( String orderState) {
-        this.orderState = orderState;
-    }
-
     public String getPayTime() {
         return this.payTime;
     }
 
     public void setPayTime( String payTime) {
         this.payTime = payTime;
+    }
+
+    public int getPageSize() {
+        return this.pageSize;
+    }
+
+    public void setPageSize( int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageNum() {
+        return this.pageNum;
+    }
+
+    public void setPageNum( int pageNum) {
+        this.pageNum = pageNum;
     }
 
     public int getIsDelete() {
@@ -269,12 +236,12 @@ public class OrderData {
         this.createTime = createTime;
     }
 
-    public String getUpdateBY() {
-        return this.updateBY;
+    public String getUpdateBy() {
+        return this.updateBy;
     }
 
-    public void setUpdateBY( String updateBY) {
-        this.updateBY = updateBY;
+    public void setUpdateBy( String updateBy) {
+        this.updateBy = updateBy;
     }
 
     public Date getUpdateTime() {
@@ -292,4 +259,4 @@ public class OrderData {
     public void setVersion( String version) {
         this.version = version;
     }
-}  
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.order.dao.OrderDao">
+    <!--订单列表查询-->
+   <select id="orderListCheck" parameterType="com.xzsd.pc.order.entity.OrderData" resultType="com.xzsd.pc.order.entity.OrderData">
+      select
+          a.order_id orderId,
+          a.total_price orderAllCost,
+          a.store_id storeId,
+          b.user_name  userName,
+          b.user_phone phone
+          from
+          `order` a, `user` b
+          where a.user_id = b.user_id
+          and a.is_delete =0
+          and a.store_id = (select store_id from store where store_manager_id = #{loginUserId})
+       <if test="userName != null and userName != ''">
+           and t2.user_name like concat('%', #{userName}, '%')
+       </if>
+       <if test="orderId != null and orderId != ''">
+           and t1.order_id like concat('%', #{orderId}, '%')
+       </if>
+       <if test="payTimeStart != null and payTimeStart != '' and payTimeEnd == null">
+           and t1.defray_time &gt;= #{payTimeStart}
+       </if>
+       <if test="payTimeStart == null and payTimeEnd != null and payTimeEnd != ''">
+           and t1.defray_time &lt;= #{payTimeEnd}
+       </if>
+       <if test="payTimeStart != null and payTimeStart != '' and payTimeEnd != null and payTimeEnd != ''">
+           and t1.defray_time between #{payTimeStart} and #{payTimeEnd}
+       </if>
+       <if test="phone != null and phone != ''">
+           and t2.user_phone like concat('%', #{phone}, '%')
+       </if>
+       <if test="orderStateId != null and orderStateId != ''">
+           and t1.order_state = #{orderStateId}
+       </if>
+       order by t1.create_time desc
+
+   </select>
+</mapper>

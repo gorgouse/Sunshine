@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xzsd.pc.driver.dao.DriverDao">
-
-    <!--统计用户账号数量-->
-    <select id="countDriverAccount" parameterType="com.xzsd.pc.driver.entity.DriverData" >
+<mapper namespace="com.xzsd.pc.driver成功.dao.DriverDao">
+    <!--统计司机账号数量-->
+    <select id="countDriverAccount" parameterType="com.xzsd.pc.driver成功.entity.DriverData" resultType ="int" >
         select count(driver_account)
         from driver
         where is_delete = 0
         and driver_account = #{driverAccount}
     </select>
 
-    <!--新增用户-->
-    <insert id="driverAdd" parameterType="com.xzsd.pc.driver.entity.DriverData">
+    <!--新增司机-->
+    <insert id="driverAdd" parameterType="com.xzsd.pc.driver成功.entity.DriverData">
         insert into driver
         (
          driver_id,
@@ -20,12 +19,9 @@
          driver_password,
          identity,
          driver_phone,
-         province_id,
-         city_id,
-         area_id,
-
-
-
+         province_code,
+         city_code,
+         area_code,
          is_delete,
          create_time,
          create_by,
@@ -41,13 +37,9 @@
             #{driverPassword},
             #{identity},
             #{phone},
-           #{provinceId},
-           #{cityId},
-           #{areaId},
-
-
-
-
+           #{provinceCode},
+           #{cityCode},
+           #{areaCode},
             #{isDelete},
             now(),
             #{createBy},
@@ -59,7 +51,7 @@
 
 
     <!--司机列表-->
-    <select id="driverListCheck" parameterType="com.xzsd.pc.driver.entity.DriverData" resultType="com.xzsd.pc.driver.entity.DriverData">
+    <select id="driverListCheck" parameterType="com.xzsd.pc.driver成功.entity.DriverData" resultType="com.xzsd.pc.driver成功.entity.DriverData">
         select
         a.driver_id driverId,
         a.driver_name driverName,
@@ -78,8 +70,8 @@
         order by create_time desc
     </select>
 
-    <!--删除用户-->
-    <update id="driverDelete" parameterType="com.xzsd.pc.driver.entity.DriverData">
+    <!--删除司机-->
+    <update id="driverDelete" parameterType="com.xzsd.pc.driver成功.entity.DriverData">
         update driver
         set
         is_delete = 1,
@@ -88,36 +80,30 @@
         version = version + 1
         where driver_id in
         <foreach item="driverId" index="index" collection="listId" open="(" separator="," close=")">
-            #{userId}
+            #{driverId}
         </foreach>
     </update>
 
-
-
-
-    <!--修改用户信息-->
-    <update id="driverUpdate" parameterType="com.xzsd.pc.driver.entity.DriverData">
+    <!--修改司机信息-->
+    <update id="driverUpdate" parameterType="com.xzsd.pc.driver成功.entity.DriverData">
         update driver
         set
-            driver_Id    =   #{driverId},
-            driver_name    = #{driverName},
-            driver_account    = #{driverAccount},
-            identity      = #{identity},
-           driver_phone        = #{phone},
-            driver_password   =  #{driverPassword},
-
-
-            province_id  = #{provinceId},
-             city_id  = #{cityId},
-             area_id  = #{areaId},
-
-            version      = version + 1
+            driver_Id       =   #{driverId},
+            driver_name     =   #{driverName},
+            driver_account  =   #{driverAccount},
+            identity        =   #{identity},
+           driver_phone     =   #{phone},
+            driver_password =  #{driverPassword},
+            province_code   = #{provinceCode},
+             city_code        = #{cityCode},
+             area_code        = #{areaCode},
+               version      = version + 1
         where driver_Id = #{driverId}
           and version = #{version}
     </update>
 
-    <!--用户详情信息-->
-    <select id="getDriverByDriverId" parameterType="java.lang.String" resultType="com.xzsd.pc.driver.entity.DriverData">
+    <!--司机详情信息-->
+    <select id="getDriverByDriverId" parameterType="java.lang.String" resultType="com.xzsd.pc.driver成功.entity.DriverData">
         select
             driver_Id driverId,
 
@@ -125,7 +111,7 @@
             driver_account driverAccount,
             driver_password driverPassword,
             identity identity,
-           driver_phone phone,
+            driver_phone phone,
 
             version
         from driver
