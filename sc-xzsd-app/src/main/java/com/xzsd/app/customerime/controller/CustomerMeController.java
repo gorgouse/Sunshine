@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 
 /**
  * @Description
- * @author 
+ * @author xumintao
  * @date 2020/4/14
  */
 @RestController
@@ -29,7 +29,7 @@ public class CustomerMeController {
      * 修改邀请码
      * @param customerMe
      * @return
-     * @author 
+     * @author xumintao
      * @date 2020/4/14
      */
     @PostMapping("updateClientInvite")

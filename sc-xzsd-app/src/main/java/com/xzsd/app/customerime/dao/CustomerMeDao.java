@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @Description 邀请码修改
- * @author 
+ * @author xumintao
  * @date 2020/4/14
  */
 @Mapper

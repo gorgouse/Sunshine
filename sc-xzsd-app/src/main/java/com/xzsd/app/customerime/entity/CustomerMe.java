@@ -2,7 +2,7 @@ package com.xzsd.app.customerime.entity;
 
 /**
  * @Description 客户端邀请码修改
- * @author 
+ * @author xumintao
  * @date 2020/4/14
  */
 public class CustomerMe {
